@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efisolar, energía solar | eficiencia energética</title>
+    <style>
+        /* --- ESTILOS GENERALES Y COLORES CORE --- */
+        :root {
+            --primary: #f39c12; /* Amarillo/Naranja Solar */
+            --dark: #1e272e;    /* Azul Oscuro/Gris Industrial */
+            --light: #f5f6fa;   /* Fondo claro */
+            --success: #2ecc71; /* Verde WhatsApp */
+            --fb: #1877f2;      /* Azul Facebook */
+            --ig: #e1306c;      /* Rosa/Rojo Instagram */
+            --tt: #010101;      /* Negro TikTok */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* --- BARRA DE NAVEGACIÓN CORREGIDA CON LOGO --- */
+        nav {
+            background-color: var(--dark);
+            padding: 10px 40px;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            border-bottom: 3px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-text {
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+        }
+        .logo-text span { color: var(--primary); font-size: 0.9rem; font-weight: normal; margin-left: 5px; }
+
+        .logo-img-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 45px; 
+            width: auto;
+            border-radius: 50%; 
+            background-color: white;
+            padding: 2px;
+        }
+
+        /* --- CABECERA PRINCIPAL (HERO) --- */
+        header {
+            background: linear-gradient(rgba(30, 39, 46, 0.85), rgba(30, 39, 46, 0.85)), 
+                        url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=1200') no-repeat center center/cover;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* --- BOTONES --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #e67e22;
+            color: white;
+        }
+
+        /* --- CONTENEDORES Y SECCIONES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 10px auto 0;
+        }
+
+        /* --- SECCIÓN SERVICIOS --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 4px solid var(--primary);
+            height: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-link:hover .card {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.15);
+            cursor: pointer;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+        
+        .card-link:hover .card h3 {
+            color: var(--primary);
+        }
+
+        .card p {
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+
+        .more-info-tag {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* --- FORMULARIO DE COTIZACIÓN --- */
+        .form-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--dark);
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .btn-submit:hover {
+            background-color: #000;
+        }
+
+        /* --- BOTONES FLOTANTES LATERALES --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--success);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 28px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        .social-float-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+            font-weight: bold;
+        }
+        .social-btn:hover { transform: scale(1.1); }
+        
+        .btn-fb { background-color: var(--fb); }
+        .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .btn-tt { background-color: var(--tt); border: 1px solid rgba(255,255,255,0.2); }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-legal a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .footer-legal a:hover {
+            text-decoration: underline;
+            color: white;
+        }
+
+        .footer-legal p {
+            margin-bottom: 8px;
+            color: #bdc3c7;
+            font-size: 0.85rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            nav { padding: 10px 20px; }
+            .logo-text { font-size: 1rem; }
+            .logo-text span { display: block; margin-left: 0; font-size: 0.75rem; }
+            header h1 { font-size: 2rem; }
+            .form-section { padding: 20px; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 24px; bottom: 15px; right: 15px; }
+            .social-btn { width: 40px; height: 40px; font-size: 18px; }
+            .social-float-container { bottom: 15px; left: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV BARRA SUPERIOR -->
+    <nav>
+        <div class="logo-text">EFISOLAR<span>| Energía Solar & Eficiencia Energética</span></div>
+        <div class="logo-img-container">
+            <!-- Recuerda guardar la foto 1000140834.jpg como "logo_efisolar.jpg" en tu carpeta -->
+            <img src="logo_efisolar.jpg" alt="Logo EFISOLAR" class="logo-img">
+        </div>
+    </nav>
+
+    <!-- 1. CABECERA -->
+    <header>
+        <div class="hero-content">
+            <h1>Energía Solar Inteligente para tu Hogar y Empresa</h1>
+            <p>Reduce hasta un 90% tu factura de luz con sistemas fotovoltaicos garantizados por ingenieros expertos. Diseñamos a la medida de tu consumo.</p>
+            <a href="https://wa.me/573001234567?text=Hola!%20Vi%20tu%20página%20web%20y%20quiero%20cotizar%20un%20proyecto%20de%20energía%20solar." class="btn btn-primary" target="_blank">Cotiza con nosotros</a>
+        </div>
+    </header>
+
+    <!-- 2. SECCIÓN SERVICIOS -->
+    <section class="container">
+        <h2 class="section-title">Nuestras Soluciones Solares</h2>
+        <div class="services-grid">
+            
+            <!-- TARJETA RESIDENCIAL -->
+            <a href="residencial.html" target="_blank" class="card-link">
+                <div class="card">
+                    <h3>Residencial</h3>
+                    <p>Protege tu economía familiar del costo del aire acondicionado. Instalamos sistemas conectados a la red para eliminar tus consumos más altos.</p>
+                    <span class="more-info-tag">Saber más →</span>
+                </div>
+            </a>
+
+            <!-- TARJETA COMERCIAL E INDUSTRIAL -->
+            <a href="comercial.html" target="_blank" class="card-link">
+                <div class="card">
+                    <h3>Comercial e Industrial</h3>
+                    <p>Optimiza los costos fijos de tu negocio. Aprovecha los beneficios tributarios y de deducción de impuestos del Gobierno por usar energías limpias.</p>
+                    <span class="more-info-tag">Saber más →</span>
+                </div>
+            </a>
+
+            <!-- TARJETA SISTEMAS AISLADOS -->
+            <a href="aislados.html" target="_blank" class="card-link">
+                <div class="card">
+                    <h3>Sistemas Aislados</h3>
+                    <p>Ideal para fincas y zonas rurales. Energía 100% independiente con bancos de baterías de litio de última generación donde la red tradicional no llega.</p>
+                    <span class="more-info-tag">Saber más →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. FORMULARIO DE COTIZACIÓN -->
+    <section id="cotizar" class="container" style="background-color: #eaeded;">
+        <h2 class="section-title">Calcula tu Proyecto Solar</h2>
+        <div class="form-section">
+            <form id="solarForm" onsubmit="generarEstudioSolar(event)">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" required placeholder="Ej. Juan Pérez">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono / WhatsApp:</label>
+                    <input type="tel" id="telefono" required placeholder="Ej. 3001234567">
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" required placeholder="Ej. juan@correo.com">
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo de Proyecto:</label>
+                    <select id="tipo" required>
+                        <option value="">Seleccione...</option>
+                        <option value="Residencial">Casa / Residencial</option>
+                        <option value="Comercial">Empresa / Industrial</option>
+                        <option value="Finca">Finca / Sistema Aislado</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="factura">¿Cuánto pagas promedio en tu factura de luz actual? (COP):</label>
+                    <input type="number" id="factura" required placeholder="Ej. 400000">
+                </div>
+                <button type="submit" class="btn btn-submit">Generar y Descargar Reporte PDF</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 4. FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 EFISOLAR S.A.S. - Ingeniería y Energías Renovables. Todos los derechos reservados.</p>
+            <div class="footer-legal">
+                <p>Nuestras instalaciones cumplen estrictamente con la normativa nacional:</p>
+                <a href="https://minenergia.gov.co/es/misiles-y-metas/reglamentos-tecnicos/reglamento-tecnico-de-instalaciones-electricas-retie/" target="_blank">Reglamento RETIE</a> | 
+                <a href="http://apolo.creg.gov.co/Publicac.nsf/1c09d18d92d36f5b05256eee007094e1/0be1bbec0bc2543b052586bf0076a599" target="_blank">Resolución CREG 174 de 2021</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 5. BOTONES FLOTANTES -->
+    <div class="social-float-container">
+        <a href="#" class="social-btn btn-fb" target="_blank">f</a>
+        <a href="#" class="social-btn btn-ig" target="_blank">📸</a>
+        <a href="#" class="social-btn btn-tt" target="_blank">🎵</a>
+    </div>
+
+    <a href="https://wa.me/573001234567?text=Hola!%20Me%20interesa%20una%20cotizacion%20para%20un%20sistema%20de%20paneles%20solares." class="whatsapp-float" target="_blank">
+        🗪
+    </a>
+
+    <!-- LIBRERÍA PDF MOVIDA AQUÍ ABAJO (Evita que la pantalla se quede en blanco) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- LÓGICA DE PROGRAMACIÓN -->
+    <script>
+        function generarEstudioSolar(event) {
+            event.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const correo = document.getElementById('correo').value;
+            const tipo = document.getElementById('tipo').value;
+            const factura = parseFloat(document.getElementById('factura').value);
+
+            const ahorroEstimado = factura * 0.85;
+            const nuevaFactura = factura - ahorroEstimado;
+            const panelesSugeridos = Math.max(2, Math.round(factura / 70000)); 
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFillColor(30, 39, 46);
+            doc.rect(0, 0, 220, 40, 'F');
+            doc.setTextColor(243, 156, 18);
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(22);
+            doc.text("EFISOLAR S.A.S.", 15, 25); 
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(10);
+            doc.text("ESTUDIO ENERGÉTICO PRELIMINAR", 130, 25);
+
+            doc.setTextColor(30, 39, 46);
+            doc.setFontSize(14);
+            doc.text("Datos del Cliente Analizado:", 15, 60);
+            doc.setFont("Helvetica", "normal");
+            doc.setFontSize(11);
+            doc.text(`Nombre: ${nombre}`, 15, 70);
+            doc.text(`Teléfono: ${telefono}`, 15, 78);
+            doc.text(`Correo electrónico: ${correo}`, 15, 86);
+            doc.text(`Tipo de Instalación: Enfoque ${tipo}`, 15, 94);
+
+            doc.setFillColor(245, 246, 250);
+            doc.rect(12, 105, 185, 55, 'F');
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(13);
+            doc.text("Resultados del Análisis Fotovoltaico:", 15, 115);
+            doc.setFont("Helvetica", "normal");
+            doc.setFontSize(11);
+            doc.text(`- Consumo Mensual Actual aproximado: $${factura.toLocaleString('es-CO')} COP`, 15, 125);
+            doc.text(`- Cantidad estimada de Paneles Solares a instalar: ${panelesSugeridos} Paneles`, 15, 133);
+            doc.setFont("Helvetica", "bold");
+            doc.setTextColor(46, 204, 113);
+            doc.text(`- Tu NUEVO pago estimado a la red será de: $${nuevaFactura.toLocaleString('es-CO')} COP`, 15, 142);
+            doc.text(`- Ahorro Mensual Proyectado (85%): $${ahorroEstimado.toLocaleString('es-CO')} COP`, 15, 150);
+
+            doc.setTextColor(30, 39, 46);
+            doc.setFont("Helvetica", "italic");
+            doc.setFontSize(10);
+            doc.text("Este documento es una simulación preliminar sujeta a visitas técnicas de viabilidad estructural sobre el tejado.", 15, 180);
+            doc.setFont("Helvetica", "bold");
+            doc.text("Un ingeniero especialista se comunicará contigo para formalizar la propuesta comercial.", 15, 190);
+
+            doc.save(`Estudio_Solar_${nombre.replace(/\s+/g, '_')}.pdf`);
+            alert(`¡Perfecto ${nombre}! Tu estudio energético ha sido calculado. El PDF técnico se descargará automáticamente.`);
+        }
+    </script>
+</body>
+</html>
