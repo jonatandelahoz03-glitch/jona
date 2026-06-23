@@ -69,7 +69,8 @@
 
         .logo-img {
             height: 45px;
-            width: auto;
+            width: 45px;
+            object-fit: cover;
             border-radius: 50%;
             background-color: white;
             padding: 2px;
@@ -93,7 +94,7 @@
             color: var(--nature-green);
         }
 
-        /* --- SECCIÓN HERO (NATURAL Y LUMINOSA) --- */
+        /* --- SECCIÓN HERO --- */
         .hero {
             background: linear-gradient(rgba(249, 251, 249, 0.85), rgba(249, 251, 249, 0.9)), 
                         url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=1200') no-repeat center center/cover;
@@ -121,15 +122,14 @@
             color: #57606f;
         }
 
-        /* Botón de WhatsApp Orgánico */
         .btn-whatsapp {
             display: inline-block;
             padding: 16px 40px;
-            background-color: #25d366; /* Verde Oficial de WhatsApp */
+            background-color: #25d366;
             color: white;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 30px; /* Bordes redondeados más orgánicos */
+            border-radius: 30px;
             transition: transform 0.2s, box-shadow 0.3s, background-color 0.3s;
             font-size: 1.1rem;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
@@ -142,7 +142,7 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
 
-        /* --- SECCIÓN SERVICIOS (TARJETAS SUAVES) --- */
+        /* --- SECCIÓN SERVICIOS --- */
         .services {
             padding: 80px 20px;
             max-width: 1100px;
@@ -176,7 +176,7 @@
         .service-card {
             background: white;
             padding: 40px 30px;
-            border-radius: 16px; /* Esquinas más redondeadas y naturales */
+            border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             border: 1px solid #f0f4eb;
             transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
@@ -220,7 +220,7 @@
             border-color: var(--nature-green);
         }
 
-        /* --- SECCIÓN COTIZADOR INTEGRADO (FONDO LIMPIO) --- */
+        /* --- SECCIÓN COTIZADOR --- */
         .calculator-section {
             background-color: #f0f5f1;
             padding: 80px 20px;
@@ -269,13 +269,6 @@
             background-color: #fafbfc;
             color: #1e272e;
             font-size: 1rem;
-            transition: border-color 0.3s, background-color 0.3s;
-        }
-
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--nature-green);
-            background-color: white;
         }
 
         .btn-submit {
@@ -289,14 +282,9 @@
             font-weight: bold;
             font-size: 1rem;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
 
-        .btn-submit:hover {
-            background-color: #219653;
-        }
-
-        /* --- FOOTER ECOLÓGICO --- */
+        /* --- FOOTER --- */
         footer {
             background-color: #1e3322;
             color: #cbd7cc;
@@ -305,11 +293,9 @@
             font-size: 0.9rem;
         }
 
-        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             nav { padding: 15px 20px; flex-direction: column; gap: 15px; }
             .hero h1 { font-size: 2.2rem; }
-            .form-container { padding: 25px; }
         }
     </style>
 </head>
@@ -318,7 +304,12 @@
     <!-- MENÚ DE NAVEGACIÓN -->
     <nav>
         <div class="logo-area">
-            <img src="logo.jpg" alt="Logo EFISOLAR" class="logo-img" onerror="this.src='logo.png'">
+            <!-- Sistema Inteligente de Autocarga del Logo -->
+            <img src="logo.jpg" 
+                 alt="Logo EFISOLAR" 
+                 class="logo-img" 
+                 onerror="this.onerror=null; this.src='logo.png'; this.addEventListener('error', function(){ this.src='https://efisolarcol.com/logo.jpg'; });">
+            
             <div class="logo-text">EFISOLAR<span>Energía Solar | Eficiencia Energética</span></div>
         </div>
         <ul class="nav-links">
@@ -328,12 +319,10 @@
         </ul>
     </nav>
 
-    <!-- HÉROE PRINCIPAL (NATURAL Y CON BOTÓN WHATSAPP) -->
+    <!-- HÉROE PRINCIPAL -->
     <header class="hero" id="inicio">
         <h1>Genere su propia energía de forma <span>sostenible</span></h1>
         <p>Diseñamos soluciones fotovoltaicas eficientes alineadas con el cuidado ambiental y la transición energética legal en Colombia.</p>
-        
-        <!-- Enlace directo al WhatsApp de tu empresa (Reemplaza el número 573001234567 por el de la empresa) -->
         <a href="https://wa.me/573001234567?text=Hola%20EFISOLAR,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto%20solar." target="_blank" class="btn-whatsapp">
             Cotiza con nosotros
         </a>
@@ -343,45 +332,37 @@
     <section class="services" id="servicios">
         <h2>Transición Energética a su Medida</h2>
         <div class="services-grid">
-            
-            <!-- TARJETA RESIDENCIAL -->
             <div class="service-card">
                 <div>
                     <h3>Hogares Ecológicos</h3>
-                    <p>Transforme su casa en una fuente de energía limpia. Disminuya el impacto ambiental de su consumo diario y estabilice su economía familiar frente a las alzas tarifarias.</p>
+                    <p>Transforme su casa en una fuente de energía limpia. Disminuya el impacto ambiental de su consumo diario.</p>
                 </div>
                 <a href="residencial.html" class="btn-card">Explorar Línea Hogar</a>
             </div>
-
-            <!-- TARJETA COMERCIAL E INDUSTRIAL -->
             <div class="service-card">
                 <div>
                     <h3>Empresas Sostenibles</h3>
-                    <p>Eleve los estándares de sostenibilidad de su compañía. Reduzca la huella de carbono industrial mientras aprovecha los beneficios de deducción tributaria vigentes.</p>
+                    <p>Eleve los estándares de sostenibilidad de su compañía. Reduzca la huella de carbono industrial de inmediato.</p>
                 </div>
                 <a href="industrial.html" class="btn-card">Explorar Línea Empresa</a>
             </div>
-
         </div>
     </section>
 
-    <!-- SECCIÓN COTIZADOR INTEGRADO -->
+    <!-- SECCIÓN COTIZADOR -->
     <section class="calculator-section" id="cotizar">
         <div class="form-container">
             <h2>Estudio Energético Gratuito</h2>
-            <p>Simule al instante el requerimiento estimado de paneles y el porcentaje de beneficio financiero para su predio.</p>
-            
+            <p>Simule al instante el requerimiento estimado de paneles y el porcentaje de beneficio financiero.</p>
             <form action="resultados.html" method="GET">
                 <div class="form-group">
                     <label for="nombre">Nombre Completo / Empresa:</label>
                     <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
                 </div>
-
                 <div class="form-group">
                     <label for="celular">Número de Celular:</label>
                     <input type="tel" id="celular" name="celular" placeholder="Ej. 3001234567" required>
                 </div>
-
                 <div class="form-group">
                     <label for="tipo">Tipo de Infraestructura:</label>
                     <select id="tipo" name="tipo" required>
@@ -389,18 +370,15 @@
                         <option value="Industrial">Comercial e Industrial</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="factura">Costo Mensual de Energía Actual (COP):</label>
                     <input type="number" id="factura" name="factura" placeholder="Ej. 350000" min="1000" required>
                 </div>
-
                 <button type="submit" class="btn-submit">Calcular Mi Ahorro Estimado</button>
             </form>
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA CORPORATIVO -->
     <footer>
         <p>&copy; 2026 EFISOLAR. Compromiso ambiental, ingeniería de vanguardia y eficiencia energética para el Caribe.</p>
     </footer>
